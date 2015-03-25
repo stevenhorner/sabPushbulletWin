@@ -15,10 +15,10 @@ IF %status% EQU %zero% (GOTO :SUCCESS) ELSE (GOTO :FAIL)
 :SUCCESS
 SET title=Sabnzbd - Download Successfull
 SET msg=Sabnzbd - Successfully downloaded %filename%
-curl https://api.pushbullet.com/api/pushes -k -u "%api%": -d device_iden="%deviceid%" -d type=note -d title="%title%" -d body="%msg%" -X POST -s -S
+curl https://api.pushbullet.com/api/pushes -k -X POST -s -S -u "%api%": -d device_iden="%deviceid%" -d type=note -d title="%title%" -d body="%msg%"
 EXIT
 :FAIL
 SET title=Sabnzbd - Download Failed
 SET msg=Sabnzbd - Failed to download %filename%
-curl https://api.pushbullet.com/api/pushes -k -u "%api%": -d device_iden="%deviceid%" -d type=note -d title="%title%" -d body="%msg%" -X POST -s -S
+curl https://api.pushbullet.com/api/pushes -k -X POST -s -S -u "%api%": -d device_iden="%deviceid%" -d type=note -d title="%title%" -d body="%msg%"
 EXIT
